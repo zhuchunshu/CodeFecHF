@@ -11,16 +11,15 @@ declare(strict_types=1);
  */
 namespace App\Controller;
 
+use Hyperf\View\RenderInterface;
+
 class IndexController extends AbstractController
 {
-    public function index(): array
+    public function index(RenderInterface $render): \Psr\Http\Message\ResponseInterface
     {
-        $user = $this->request->input('user', 'Hyperf');
-        $method = $this->request->getMethod();
+//        $user = $this->request->input('user', 'Hyperf');
+//        $method = $this->request->getMethod();
 
-        return [
-            'method' => $method,
-            'message' => "Hello {$user}.",
-        ];
+        return $render->render('index');
     }
 }
