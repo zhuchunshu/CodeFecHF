@@ -29,6 +29,7 @@
         "hyperf/model-cache": "~2.1.0"
     },
     "require-dev": {
+        "filp/whoops": "^2.13",
         "friendsofphp/php-cs-fixer": "^2.14",
         "hyperf/devtool": "~2.1.0",
         "hyperf/testing": "~2.1.0",
