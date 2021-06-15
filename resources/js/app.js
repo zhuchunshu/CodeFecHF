@@ -1,1 +1,1 @@
-alert("1");
+require('./bootstrap')

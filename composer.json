@@ -19,6 +19,7 @@
         "hyperf/config": "~2.1.0",
         "hyperf/database": "~2.1.0",
         "hyperf/db-connection": "~2.1.0",
+        "hyperf/filesystem": "^2.1",
         "hyperf/framework": "~2.1.0",
         "hyperf/guzzle": "~2.1.0",
         "hyperf/http-server": "~2.1.0",

@@ -10,7 +10,8 @@ function public_path(path=""){
     return "../../public"+path;
 }
 
-mix.js('../js/app.js', public_path("/js"));
+mix.js('../js/app.js', public_path("/js")).version();
 
+mix.setPublicPath(public_path());
 
-mix.setPublicPath(public_path())
+mix.setResourceRoot("../");

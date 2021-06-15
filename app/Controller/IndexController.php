@@ -19,7 +19,6 @@ class IndexController extends AbstractController
     {
 //        $user = $this->request->input('user', 'Hyperf');
 //        $method = $this->request->getMethod();
-
-        return test();
+        return public_path('a');
     }
 }
