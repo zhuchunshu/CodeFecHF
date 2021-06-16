@@ -21,7 +21,12 @@
   },
   "homepage": "https://github.com/zhuchunshu/CodeFecHF#readme",
   "dependencies": {
+    "css-what": "^5.0.1",
+    "glob-parent": "^5.1.2",
     "laravel-mix": "^6.0.20",
     "vue": "^3.1.1"
+  },
+  "devDependencies": {
+    "postcss": "^8.3.1"
   }
 }
