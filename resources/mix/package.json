@@ -13,6 +13,7 @@
   "author": "Inkedus",
   "license": "MIT",
   "dependencies": {
+    "css-what": "^5.0.1",
     "glob-parent": "^5.1.2",
     "laravel-mix": "^6.0.19",
     "normalize-url": "^4.5.1"
