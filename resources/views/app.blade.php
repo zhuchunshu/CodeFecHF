@@ -14,16 +14,14 @@
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 </head>
 
-<body>
-    <div id="app" class="{{path_class()}}-page">
+<body class="antialiased">
+    @include('layouts.header')
+    <div id="app" class="wrapper {{path_class()}}-page">
         @include('layouts.header')
         {{-- @include('layouts.bujian._msg')
         @include('shared._error') --}}
-        <main class="py-4">
-            @yield('content')
+        @yield('content')
 
-        </main>
-        
     </div>
     @include('layouts.footer')
     
