@@ -1,2 +1,1 @@
-require('./bootstrap');
-import("@tabler/core");
+import './bootstrap';
