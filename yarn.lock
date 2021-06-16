@@ -4905,7 +4905,16 @@ postcss@7.0.21:
     source-map "^0.6.1"
     supports-color "^6.1.0"
 
-postcss@^8.2.15, postcss@^8.3.1:
+postcss@^7.0.36:
+  version "7.0.36"
+  resolved "https://registry.nlark.com/postcss/download/postcss-7.0.36.tgz?cache=0&sync_timestamp=1623677316697&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fpostcss%2Fdownload%2Fpostcss-7.0.36.tgz#056f8cffa939662a8f5905950c07d5285644dfcb"
+  integrity sha1-BW+M/6k5ZiqPWQWVDAfVKFZE38s=
+  dependencies:
+    chalk "^2.4.2"
+    source-map "^0.6.1"
+    supports-color "^6.1.0"
+
+postcss@^8.2.15:
   version "8.3.4"
   resolved "https://registry.nlark.com/postcss/download/postcss-8.3.4.tgz?cache=0&sync_timestamp=1623677316697&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fpostcss%2Fdownload%2Fpostcss-8.3.4.tgz#41ece1c43f2f7c74dc7d90144047ce052757b822"
   integrity sha1-QezhxD8vfHTcfZAUQEfOBSdXuCI=
