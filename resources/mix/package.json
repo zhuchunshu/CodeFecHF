@@ -13,12 +13,9 @@
   "author": "Inkedus",
   "license": "MIT",
   "dependencies": {
-    "@tabler/core": "1.0.0-beta3",
-    "cnpm": "^6.2.0",
     "glob-parent": "^5.1.2",
     "laravel-mix": "^6.0.19",
-    "normalize-url": "^4.5.1",
-    "vue": "^3.1.1"
+    "normalize-url": "^4.5.1"
   },
   "devDependencies": {
     "postcss": "^8.2.10"

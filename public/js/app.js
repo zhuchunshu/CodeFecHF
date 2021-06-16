@@ -65,6 +65,8 @@ var __webpack_exports__ = {};
   !*** ../js/app.js ***!
   \********************/
 __webpack_require__(/*! ./bootstrap */ "../js/bootstrap.js");
+
+Promise.resolve().then(function webpackMissingModule() { var e = new Error("Cannot find module '@tabler/core'"); e.code = 'MODULE_NOT_FOUND'; throw e; });
 })();
 
 /******/ })()

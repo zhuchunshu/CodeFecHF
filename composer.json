@@ -13,6 +13,7 @@
     "license": "Apache-2.0",
     "require": {
         "php": ">=7.3",
+        "ext-json": "*",
         "hyperf/async-queue": "~2.1.0",
         "hyperf/cache": "~2.1.0",
         "hyperf/command": "~2.1.0",
@@ -29,7 +30,8 @@
         "hyperf/process": "~2.1.0",
         "hyperf/redis": "~2.1.0",
         "hyperf/view": "^2.1",
-        "hyperf/view-engine": "^2.1"
+        "hyperf/view-engine": "^2.1",
+        "laravel/helpers": "^1.4"
     },
     "require-dev": {
         "filp/whoops": "^2.13",

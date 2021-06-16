@@ -15,10 +15,10 @@ use Hyperf\View\RenderInterface;
 
 class IndexController extends AbstractController
 {
-    public function index(RenderInterface $render): string
+    public function index(RenderInterface $render)
     {
 //        $user = $this->request->input('user', 'Hyperf');
 //        $method = $this->request->getMethod();
-        return public_path('a');
+        return mix('js/app.js');
     }
 }

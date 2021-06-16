@@ -2,7 +2,7 @@
  * @author Inkedus
  * @licence MIT
  * @link https://github.com/zhuchunshu/CoedFecHF
- * @type {mix.Api}
+ * @type {Api | {Api: Api; VueConfig: VueConfig; readonly default: Api}}
  */
 let mix = require('laravel-mix');
 
