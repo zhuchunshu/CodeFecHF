@@ -3,7 +3,9 @@
 declare(strict_types=1);
 
 use App\CodeFec\Menu\Menu;
+use App\CodeFec\Header\Header;
 use App\CodeFec\Menu\MenuInterface;
+use App\CodeFec\Header\HeaderInterface;
 
 /**
  * This file is part of Hyperf.
@@ -14,5 +16,6 @@ use App\CodeFec\Menu\MenuInterface;
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
 return [
-    MenuInterface::class => Menu::class
+    MenuInterface::class => Menu::class,
+    HeaderInterface::class => Header::class
 ];
