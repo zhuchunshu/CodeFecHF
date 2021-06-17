@@ -10,10 +10,9 @@ declare(strict_types=1);
  * @license  https://github.com/zhuchunshu/CodeFecHF/blob/master/LICENSE
  */
 
-use App\CodeFec\Helpers;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-use Hyperf\HttpServer\Contract\RequestInterface;
+use App\CodeFec\Menu\MenuInterface;
 
 function public_path($path = ''): string
 {
@@ -59,5 +58,12 @@ if (!function_exists("path_class")) {
             return "main";
         }
         return $result;
+    }
+}
+
+if(!function_exists("menu")){
+    function menu(){
+        $container = \Hyperf\Utils\ApplicationContext::getContainer();
+        return $container->get(MenuInterface::class);
     }
 }

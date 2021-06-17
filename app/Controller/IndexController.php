@@ -12,14 +12,31 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\CodeFec\Menu\Menu;
+use Hyperf\Di\Annotation\Inject;
 use Hyperf\View\RenderInterface;
+use App\CodeFec\Menu\MenuInterface;
+use App\Controller\AbstractController;
 
 class IndexController extends AbstractController
 {
+    
+    public function __construct()
+    {
+        menu()->add(214,[
+            "a" => 1
+        ]);
+    }
+
     public function index(RenderInterface $render)
     {
-        //        $user = $this->request->input('user', 'Hyperf');
-        //        $method = $this->request->getMethod();
-        return $render->render("index");
+        menu()->add(2,[
+            "a" => 1
+        ]);
+        menu()->add(3,[
+            "a" => 1
+        ]);
+        return menu()->get();
+        //return $this->userService->getId(11);
     }
 }

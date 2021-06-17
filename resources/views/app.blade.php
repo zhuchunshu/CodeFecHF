@@ -17,7 +17,6 @@
 <body class="antialiased">
     @include('layouts.header')
     <div id="app" class="wrapper {{ path_class() }}-page">
-        @include('layouts.header')
         {{-- @include('layouts.bujian._msg')
         @include('shared._error') --}}
         <div class="page-wrapper">
