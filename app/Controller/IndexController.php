@@ -9,22 +9,19 @@ declare(strict_types=1);
  * @contact  laravel@88.com
  * @license  https://github.com/zhuchunshu/CodeFecHF/blob/master/LICENSE
  */
-
 namespace App\Controller;
 
 use Hyperf\View\RenderInterface;
-use App\Controller\AbstractController;
 
 class IndexController extends AbstractController
 {
-
     public function index(RenderInterface $render)
     {
-        menu()->add(2,[
-            "url" => "/",
-            "name" => "仪表盘",
-            "icon" => "",
+        menu()->add(2, [
+            'url' => '/',
+            'name' => '仪表盘',
+            'icon' => '',
         ]);
-        return $render->render("index");
+        return $render->render('index');
     }
 }
