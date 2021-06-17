@@ -16,15 +16,24 @@
 
 <body class="antialiased">
     @include('layouts.header')
-    <div id="app" class="wrapper {{path_class()}}-page">
+    <div id="app" class="wrapper {{ path_class() }}-page">
         @include('layouts.header')
         {{-- @include('layouts.bujian._msg')
         @include('shared._error') --}}
-        @yield('content')
+        <div class="page-wrapper">
+            @include('layouts.header_title')
+            <div class="page-body">
+                <div class="container-xl">
+                    <div class="row row-deck row-cards">
+                        @yield('content')
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
     @include('layouts.footer')
-    
+
     <script src="/js/jquery-3.6.0.min.js"></script>
     <script src="{{ mix('js/app.js') }}"></script>
     <script src="{{ 'tabler/libs/apexcharts/dist/apexcharts.min.js' }}"></script>

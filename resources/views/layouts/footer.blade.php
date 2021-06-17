@@ -28,11 +28,13 @@
                 <ul class="list-inline list-inline-dots mb-0">
                     <li class="list-inline-item">
                         Copyright &copy; 2021
-                        <a href="." class="link-secondary">Tabler</a>.
-                        All rights reserved.
+                        <a href="." class="link-secondary">{{ config("codefec.app.name","CodeFec") }}</a>
                     </li>
                     <li class="list-inline-item">
-                        <a href="./changelog.html" class="link-secondary" rel="noopener">v1.0.0-beta3</a>
+                        <a href="https://www.swoole.com/" class="link-secondary" rel="noopener">SWOOLE V{{ SWOOLE_VERSION }}</a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#" class="link-secondary" rel="noopener">CPU CORE: {{ swoole_cpu_num() }}</a>
                     </li>
                 </ul>
             </div>
