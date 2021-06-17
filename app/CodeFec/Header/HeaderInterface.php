@@ -9,11 +9,12 @@ interface HeaderInterface{
      */
     public function get();
     /**
-     * 新增页头菜单
+     * 新增页头钩子
      *
-     * @param integer 菜单id $id
-     * @param array 菜单内容 $arr
+     * @param integer 唯一id $id
+     * @param integer 类型(0:左,1:右) $type
+     * @param string 视图名称 $view
      * @return boolean
      */
-    public function add(int $id,array $arr);
+    public function add(int $id,int $type,string $view);
 }

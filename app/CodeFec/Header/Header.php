@@ -20,8 +20,12 @@ class Header implements HeaderInterface {
         return $this->list;
     }
 
-    public function add(int $id, array $arr)
+    public function add(int $id, int $type,string $view)
     {
+        $arr = [
+            "type" => $type,
+            "view" => $view,
+        ];
         $this->list = Arr::add($this->list,$id,$arr);
         return true;
     }
