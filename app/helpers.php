@@ -41,6 +41,13 @@ if (!function_exists('mix')) {
     }
 }
 
+if (!function_exists("arr_has")) {
+    function arr_has($array, $keys)
+    {
+        return Arr::has($array, $keys);
+    }
+}
+
 if (!function_exists("request")) {
     function request()
     {
@@ -52,18 +59,49 @@ if (!function_exists("path_class")) {
     function path_class()
     {
         $path = request()->path();
-        $result = str_replace("/","-",$path);
+        $result = str_replace("/", "-", $path);
         $result = Str::before($result, '.');
-        if($result=="-"){
+        if ($result == "-") {
             return "main";
         }
         return $result;
     }
 }
 
-if(!function_exists("menu")){
-    function menu(){
+if (!function_exists("menu")) {
+    function menu()
+    {
         $container = \Hyperf\Utils\ApplicationContext::getContainer();
         return $container->get(MenuInterface::class);
+    }
+}
+
+if (!function_exists("menu_pd")) {
+    function menu_pd($id)
+    {
+        $i = 0;
+        foreach (menu()->get() as $key => $value) {
+            if (arr_has($value, "parent_id")) {
+                if ($value['parent_id'] == $id) {
+                    $i++;
+                }
+            }
+        }
+        return $i;
+    }
+}
+
+if (!function_exists("menu_pdArr")) {
+    function menu_pdArr($id)
+    {
+        $arr = [];
+        foreach (menu()->get() as $key => $value) {
+            if (arr_has($value, "parent_id")) {
+                if ($value['parent_id'] == $id) {
+                    $arr[]=$value;
+                }
+            }
+        }
+        return $arr;
     }
 }

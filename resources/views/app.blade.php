@@ -15,8 +15,8 @@
 </head>
 
 <body class="antialiased">
-    @include('layouts.header')
     <div id="app" class="wrapper {{ path_class() }}-page">
+        @include('layouts.header')
         {{-- @include('layouts.bujian._msg')
         @include('shared._error') --}}
         <div class="page-wrapper">
@@ -29,9 +29,8 @@
                 </div>
             </div>
         </div>
-
+        @include('layouts.footer')
     </div>
-    @include('layouts.footer')
 
     <script src="/js/jquery-3.6.0.min.js"></script>
     <script src="{{ mix('js/app.js') }}"></script>
