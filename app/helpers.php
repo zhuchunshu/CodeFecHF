@@ -14,6 +14,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Hyperf\View\RenderInterface;
 use App\CodeFec\Menu\MenuInterface;
+use Hyperf\Contract\SessionInterface;
 
 function public_path($path = ''): string
 {
@@ -121,5 +122,12 @@ if(!function_exists("Json_Api")){
             "success" => $success,
             "result" => $result
         ];
+    }
+}
+
+if(!function_exists("session")){
+    function session(){
+        $container = \Hyperf\Utils\ApplicationContext::getContainer();
+        return $container->get(SessionInterface::class);
     }
 }

@@ -11,6 +11,7 @@ declare(strict_types=1);
  */
 namespace App\Controller;
 
+use App\CodeFec\Admin\Admin;
 use App\Model\AdminUser;
 use App\Request\Admin\LoginRequest;
 use Hyperf\HttpServer\Contract\RequestInterface;
@@ -39,6 +40,7 @@ class AdminController
         // 数据库里的密码
         $d_pwd = AdminUser::query()->where("username",$username)->first()->password;
         if(Hash::check($password, $d_pwd)){
+            Admin::SignIn($username,$password);
             return Json_Api(200,true,["msg"=>"登陆成功!","url"=>"/admin"]);
         }else{
             return Json_Api(401,false,["密码错误"]);
