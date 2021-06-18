@@ -15,7 +15,7 @@ use Hyperf\View\RenderInterface;
 
 class IndexController extends AbstractController
 {
-    public function index(RenderInterface $render)
+    public function index(RenderInterface $render): \Psr\Http\Message\ResponseInterface
     {
         menu()->add(2, [
             'url' => '/',

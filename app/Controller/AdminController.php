@@ -23,7 +23,7 @@ class AdminController
         return $response->raw('Hello Hyperf!');
     }
 
-    public function login()
+    public function login(): \Psr\Http\Message\ResponseInterface
     {
         return view('admin.login');
     }
