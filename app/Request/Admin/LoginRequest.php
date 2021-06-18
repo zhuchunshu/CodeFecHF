@@ -33,4 +33,12 @@ class LoginRequest extends FormRequest
             'password' => 'required|string',
         ];
     }
+
+    public function attributes(): array
+    {
+        return [
+            "username" => "用户名",
+            "password" => "密码"
+        ];
+    }
 }

@@ -11,6 +11,7 @@ declare(strict_types=1);
  */
 namespace App\Controller;
 
+use App\Request\Admin\LoginRequest;
 use Hyperf\HttpServer\Contract\RequestInterface;
 use Hyperf\HttpServer\Contract\ResponseInterface;
 
@@ -27,8 +28,8 @@ class AdminController
         return view('admin.login');
     }
 
-    public function loginPost()
+    public function loginPost(LoginRequest $request)
     {
-        return 1;
+        
     }
 }

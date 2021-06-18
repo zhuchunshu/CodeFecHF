@@ -113,3 +113,13 @@ if (!function_exists("menu_pdArr")) {
         return $arr;
     }
 }
+
+if(!function_exists("Json_Api")){
+    function Json_Api(int $code=200,bool $success=true,array $result=[]){
+        return [
+            "code" => $code,
+            "success" => $success,
+            "result" => $result
+        ];
+    }
+}
