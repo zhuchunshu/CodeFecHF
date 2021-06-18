@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\CodeFec\Admin\Admin;
+use App\Codefec\Admin\Ui;
 use App\Model\AdminUser;
 use App\Request\Admin\LoginRequest;
 use Hyperf\HttpServer\Contract\RequestInterface;
@@ -20,9 +21,9 @@ use HyperfExt\Hashing\Hash;
 
 class AdminController
 {
-    public function index(RequestInterface $request, ResponseInterface $response): \Psr\Http\Message\ResponseInterface
+    public function index(RequestInterface $request, ResponseInterface $response,Ui $ui)
     {
-        return view("index");
+        return $ui->title("a")->body("1")->render();
     }
 
     public function login()

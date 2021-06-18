@@ -12,7 +12,7 @@ interface HeaderInterface{
      * 新增页头钩子
      *
      * @param integer 唯一id $id
-     * @param integer 类型(0:左,1:右) $type
+     * @param integer 类型(0:左,1:右,2:页头按钮) $type
      * @param string 视图名称 $view
      * @return boolean
      */

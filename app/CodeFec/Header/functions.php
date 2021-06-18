@@ -31,4 +31,15 @@ class functions
         }
         return $arr;
     }
+
+    public static function headerBtn()
+    {
+        $arr = [];
+        foreach (\App\CodeFec\Header\functions::header()->get() as $value) {
+            if($value['type']==2){
+                $arr[]=$value;
+            }
+        }
+        return $arr;
+    }
 }
