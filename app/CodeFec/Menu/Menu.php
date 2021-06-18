@@ -1,31 +1,42 @@
 <?php
+
+declare(strict_types=1);
+/**
+ * CodeFec - Hyperf
+ *
+ * @link     https://github.com/zhuchunshu
+ * @document https://codefec.com
+ * @contact  laravel@88.com
+ * @license  https://github.com/zhuchunshu/CodeFecHF/blob/master/LICENSE
+ */
 namespace App\CodeFec\Menu;
 
 use Illuminate\Support\Arr;
 
-class Menu implements MenuInterface{
-
-    public $list=[
+class Menu implements MenuInterface
+{
+    public $list = [
         0 => [
-            "url" => "/",
-            "name" => "仪表盘",
-            "icon" => ""
+            'url' => '/',
+            'name' => '仪表盘',
+            'icon' => '',
         ],
         1 => [
-            "url" => "/",
-            "name" => "仪表盘",
-            "icon" => "",
-            "parent_id" => 0
-        ]
+            'url' => '/',
+            'name' => '仪表盘',
+            'icon' => '',
+            'parent_id' => 0,
+        ],
     ];
 
-    public function get(){
+    public function get(): array
+    {
         return $this->list;
     }
 
-    public function add(int $id, array $arr){
-        $this->list = Arr::add($this->list,$id,$arr);
+    public function add(int $id, array $arr): bool
+    {
+        $this->list = Arr::add($this->list, $id, $arr);
         return true;
     }
-
 }
