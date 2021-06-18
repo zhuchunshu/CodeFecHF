@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\CodeFec\Admin\Admin;
-use App\Codefec\Admin\Ui;
+use App\CodeFec\Admin\Ui;
 use App\Model\AdminUser;
 use App\Request\Admin\LoginRequest;
 use Hyperf\HttpServer\Contract\RequestInterface;

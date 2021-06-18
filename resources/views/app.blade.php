@@ -21,6 +21,8 @@
     <meta name="MobileOptimized" content="320" />
     <link rel="icon" href="/logo.svg" type="image/x-icon" />
     <link rel="shortcut icon" href="/logo.svg" type="image/x-icon" />
+    <!-- 自定义CSS -->
+    @yield('css')
 </head>
 
 <body class="antialiased">
@@ -48,6 +50,8 @@
     <script src="{{ '/tabler/libs/apexcharts/dist/apexcharts.min.js' }}"></script>
     <!-- Tabler Core -->
     <script src="{{ '/tabler/js/tabler.min.js' }}"></script>
+    <!-- 自定义Js -->
+    @yield('scripts')
 </body>
 
 </html>
