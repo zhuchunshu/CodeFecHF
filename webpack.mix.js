@@ -19,8 +19,21 @@ function resources_path($path){
 mix.js(resources_path("js/app.js"),"js").version();
 
 // vue.js
-mix.js(resources_path("js/vue.js"),"js").version();
+mix.js(resources_path("js/vue.js"),"js").vue({ version: 3 })
+.webpackConfig((webpack) => {
+    return {
+        plugins: [
+            new webpack.DefinePlugin({
+                __VUE_OPTIONS_API__: true,
+                __VUE_PROD_DEVTOOLS__: false,
+            }),
+        ],
+    };
+}).version();
 
+//admin
+    // login
+    mix.js(resources_path("js/admin/login.js"),"js/admin").version();
 
 
 // app.css
