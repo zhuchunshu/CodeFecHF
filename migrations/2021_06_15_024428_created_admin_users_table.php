@@ -24,7 +24,6 @@ class CreatedAdminUsersTable extends Migration
             $table->bigIncrements('id');
             $table->string('username');
             $table->string('email');
-            $table->string('avatar');
             $table->string('password');
 
             $table->timestamps();
