@@ -1,27 +1,34 @@
 <?php
 
 declare(strict_types=1);
-
+/**
+ * CodeFec - Hyperf
+ *
+ * @link     https://github.com/zhuchunshu
+ * @document https://codefec.com
+ * @contact  laravel@88.com
+ * @license  https://github.com/zhuchunshu/CodeFecHF/blob/master/LICENSE
+ */
 namespace App\Controller;
 
-use Hyperf\HttpServer\Annotation\AutoController;
-use Hyperf\HttpServer\Annotation\RequestMapping;
 use Hyperf\HttpServer\Contract\RequestInterface;
 use Hyperf\HttpServer\Contract\ResponseInterface;
 
-/**
- * @AutoController
- */
+
 class AdminController
 {
-    /**
-     * @RequestMapping(path="/")
-     * @param RequestInterface $request
-     * @param ResponseInterface $response
-     * @return \Psr\Http\Message\ResponseInterface
-     */
     public function index(RequestInterface $request, ResponseInterface $response): \Psr\Http\Message\ResponseInterface
     {
         return $response->raw('Hello Hyperf!');
+    }
+
+    public function login()
+    {
+        return view('admin.login');
+    }
+
+    public function loginPost()
+    {
+        return 1;
     }
 }

@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
+use Hyperf\View\RenderInterface;
 use App\CodeFec\Menu\MenuInterface;
 
 function public_path($path = ''): string
@@ -73,6 +74,13 @@ if (!function_exists("menu")) {
     {
         $container = \Hyperf\Utils\ApplicationContext::getContainer();
         return $container->get(MenuInterface::class);
+    }
+}
+
+if(!function_exists("view")){
+    function view(string $view,array $data=[]){
+        $container = \Hyperf\Utils\ApplicationContext::getContainer();
+        return $container->get(RenderInterface::class)->render($view,$data);
     }
 }
 
