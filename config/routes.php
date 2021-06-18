@@ -26,8 +26,8 @@ Router::addRoute(['GET'], '/admin/login', [AdminController::class,"login"]);
 Router::addRoute(['POST'], '/admin/login', [AdminController::class,"loginPost"]);
 
 // 后台路由组
-Router::addGroup("/admin/",function(){
-    
+Router::addGroup("/admin",function(){
+    Router::get("",[AdminController::class,"index"]);
 },[
     "middleware" => [\App\Middleware\AdminMiddleware::class]
 ]);

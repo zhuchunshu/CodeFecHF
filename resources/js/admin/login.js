@@ -1,6 +1,3 @@
-import axios from "axios"
-import swal from "sweetalert"
-
 const form = {
     data() {
         return {

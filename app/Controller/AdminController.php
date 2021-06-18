@@ -22,16 +22,22 @@ class AdminController
 {
     public function index(RequestInterface $request, ResponseInterface $response): \Psr\Http\Message\ResponseInterface
     {
-        return $response->raw('Hello Hyperf!');
+        return view("index");
     }
 
-    public function login(): \Psr\Http\Message\ResponseInterface
+    public function login()
     {
+        if(Admin::Check()){
+            return Json_Api(403,false,["msg"=>"您已登录"]);
+        }
         return view('admin.login');
     }
 
     public function loginPost(LoginRequest $request)
     {
+        if(Admin::Check()){
+            return Json_Api(403,false,["msg"=>"您已登录"]);
+        }
         $username = $request->input("username");
         $password = $request->input("password");
         if(!AdminUser::query()->where("username",$username)->count()){
