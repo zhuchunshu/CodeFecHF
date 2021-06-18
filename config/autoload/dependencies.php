@@ -2,8 +2,10 @@
 
 declare(strict_types=1);
 
+use App\CodeFec\Ui\Ui;
 use App\CodeFec\Menu\Menu;
 use App\CodeFec\Header\Header;
+use App\CodeFec\Ui\UiInterface;
 use App\CodeFec\Menu\MenuInterface;
 use App\CodeFec\Header\HeaderInterface;
 
@@ -17,5 +19,6 @@ use App\CodeFec\Header\HeaderInterface;
  */
 return [
     MenuInterface::class => Menu::class,
-    HeaderInterface::class => Header::class
+    HeaderInterface::class => Header::class,
+    UiInterface::class => Ui::class
 ];
