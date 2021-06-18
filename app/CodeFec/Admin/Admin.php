@@ -24,4 +24,8 @@ class Admin {
         return session()->get("admin");
     }
 
+    public static function Check(){
+        return session()->has("admin");
+    }
+
 }
