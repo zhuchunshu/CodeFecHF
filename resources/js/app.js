@@ -1,7 +1,6 @@
 import './bootstrap';
 import axios from "axios"
 import 'sweetalert';
-import swal from 'sweetalert';
 
 if(document.getElementById("app")){
     const app = {

@@ -1852,7 +1852,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 if (document.getElementById("app")) {
   var app = {
     data: function data() {
@@ -1870,7 +1869,7 @@ if (document.getElementById("app")) {
       }).then(function (response) {
         return _this.avatar = response.data.result.avatar;
       })["catch"](function (error) {
-        sweetalert__WEBPACK_IMPORTED_MODULE_2___default()("请求错误,头像获取失败,详细查看控制台");
+        swal("请求错误,头像获取失败,详细查看控制台");
         console.log(error);
       });
     }

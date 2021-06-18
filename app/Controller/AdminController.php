@@ -21,9 +21,11 @@ use HyperfExt\Hashing\Hash;
 
 class AdminController
 {
-    public function index(RequestInterface $request, ResponseInterface $response,Ui $ui)
+    public function index(Ui $ui)
     {
-        return $ui->title("a")->body("1")->render();
+        return $ui->title("标题")
+        ->body("Hello World")
+        ->render();
     }
 
     public function login()
