@@ -55,4 +55,10 @@ class AdminController
             return Json_Api(401,false,["密码错误"]);
         }
     }
+    
+    // 退出登录
+    public function logout(){
+        session()->clear();
+        return Json_Api(200,true,["msg"=>"已退出登陆!","url"=>"/admin/login"]);
+    }
 }

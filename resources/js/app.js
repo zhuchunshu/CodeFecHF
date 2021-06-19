@@ -1,6 +1,6 @@
 import './bootstrap';
 import axios from "axios"
-import 'sweetalert';
+import swal from 'sweetalert';
 
 if(document.getElementById("app")){
     const app = {
@@ -9,6 +9,35 @@ if(document.getElementById("app")){
                 Username:admin.username,
                 Email:admin.email,
                 avatar:"/logo.svg"
+            }
+        },
+        methods: {
+            // 退出登陆
+            logout(){
+                axios.post("/admin/logout")
+                .then(function(response){
+                    var data = response.data;
+                    if(data.success===false){
+                        swal({
+                            title : "出错啦!",
+                            text : data.result.msg,
+                            icon: "error"
+                        })
+                    }else{
+                        swal({
+                            title : "Success!",
+                            text : data.result.msg,
+                            icon: "success"
+                        })
+                        setTimeout(() => {
+                            location.href=data.result.url;
+                        }, 1000);
+                    }
+                })
+                .catch(function(error){
+                    swal("请求错误,详细查看控制台")
+                    console.log(error)
+                })
             }
         },
         mounted() {

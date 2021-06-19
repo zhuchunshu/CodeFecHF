@@ -1861,6 +1861,34 @@ if (document.getElementById("app")) {
         avatar: "/logo.svg"
       };
     },
+    methods: {
+      // 退出登陆
+      logout: function logout() {
+        axios__WEBPACK_IMPORTED_MODULE_1___default().post("/admin/logout").then(function (response) {
+          var data = response.data;
+
+          if (data.success === false) {
+            sweetalert__WEBPACK_IMPORTED_MODULE_2___default()({
+              title: "出错啦!",
+              text: data.result.msg,
+              icon: "error"
+            });
+          } else {
+            sweetalert__WEBPACK_IMPORTED_MODULE_2___default()({
+              title: "Success!",
+              text: data.result.msg,
+              icon: "success"
+            });
+            setTimeout(function () {
+              location.href = data.result.url;
+            }, 1000);
+          }
+        })["catch"](function (error) {
+          sweetalert__WEBPACK_IMPORTED_MODULE_2___default()("请求错误,详细查看控制台");
+          console.log(error);
+        });
+      }
+    },
     mounted: function mounted() {
       var _this = this;
 
@@ -1869,7 +1897,7 @@ if (document.getElementById("app")) {
       }).then(function (response) {
         return _this.avatar = response.data.result.avatar;
       })["catch"](function (error) {
-        swal("请求错误,头像获取失败,详细查看控制台");
+        sweetalert__WEBPACK_IMPORTED_MODULE_2___default()("请求错误,头像获取失败,详细查看控制台");
         console.log(error);
       });
     }
