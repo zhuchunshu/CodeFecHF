@@ -13,6 +13,7 @@ namespace App\Controller;
 
 use App\CodeFec\Admin\Admin;
 use App\CodeFec\Admin\Ui;
+use App\CodeFec\Admin\Ui\Card;
 use App\Model\AdminUser;
 use App\Request\Admin\LoginRequest;
 use Hyperf\HttpServer\Contract\RequestInterface;
@@ -21,10 +22,15 @@ use HyperfExt\Hashing\Hash;
 
 class AdminController
 {
-    public function index(Ui $ui)
+    public function index(Ui $ui,Card $card)
     {
         return $ui->title("标题")
-        ->body("Hello World")
+        ->body($card
+            ->title("牛逼")
+            ->titleType(1)
+            ->content("haha")
+            ->render()
+        )
         ->render();
     }
 
