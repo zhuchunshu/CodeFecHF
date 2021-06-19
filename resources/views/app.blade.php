@@ -48,7 +48,7 @@
     <script src="{{ '/tabler/js/tabler.min.js' }}"></script>
     <!-- 自定义Js -->
     @foreach(\App\CodeFec\Ui\functions::get("js") as $key => $value)
-        <link rel="stylesheet" href="{{ $value }}">
+        <script src="{{ $value }}"></script>
     @endforeach
     @yield('scripts')
 </body>

@@ -4,18 +4,18 @@ namespace App\CodeFec\Ui;
 
 class functions
 {
-    public static function header()
+    public static function Ui()
     {
         $container = \Hyperf\Utils\ApplicationContext::getContainer();
-        return $container->get(HeaderInterface::class);
+        return $container->get(UiInterface::class);
     }
 
     public static function get($type)
     {
         $arr = [];
-        foreach (\App\CodeFec\Header\functions::header()->get() as $value) {
+        foreach (\App\CodeFec\Ui\functions::Ui()->get() as $value) {
             if($value['type']==$type){
-                $arr[]=$value;
+                $arr[]=$value["value"];
             }
         }
         return $arr;
