@@ -3,12 +3,13 @@ import axios from "axios"
 import swal from 'sweetalert';
 
 if(document.getElementById("app")){
-    const app = {
+    const vue_header = {
         data() {
             return {
                 Username:admin.username,
                 Email:admin.email,
-                avatar:"/logo.svg"
+                avatar:"/logo.svg",
+                menu :"加载中"
             }
         },
         methods: {
@@ -41,6 +42,7 @@ if(document.getElementById("app")){
             }
         },
         mounted() {
+            // 获取头像
             axios.post("/api/avatar",{email:admin.email})
             .then(response=>(this.avatar=response.data.result.avatar))
             .catch(function(error){
@@ -49,5 +51,14 @@ if(document.getElementById("app")){
             })
         },
     }
-    Vue.createApp(app).mount("#app")
+    Vue.createApp(vue_header).mount("#vue-header")
+
+    const test = {
+        data() {
+            return {
+                text:"1"
+            }
+        },
+    }
+    Vue.createApp(test).mount("#test")
 }

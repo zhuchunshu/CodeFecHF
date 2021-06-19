@@ -31,6 +31,9 @@
             <div class="page-body">
                 <div class="container-xl">
                     <div class="row row-deck row-cards">
+                        <div id="test">
+                            @{{ text }}
+                        </div>
                         @yield('content')
                     </div>
                 </div>

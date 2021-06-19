@@ -12,7 +12,7 @@
             @foreach(\App\CodeFec\Header\functions::right() as $key => $value)
                 @include($value['view'])
             @endforeach
-            <div class="nav-item dropdown">
+            <div id="vue-header" class="nav-item dropdown">
                 <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown"
                     aria-label="Open user menu">
                     <span class="avatar avatar-sm" :style="{ 'background-image':'url('+avatar+')' }"></span>

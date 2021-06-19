@@ -1853,12 +1853,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 if (document.getElementById("app")) {
-  var app = {
+  var vue_header = {
     data: function data() {
       return {
         Username: admin.username,
         Email: admin.email,
-        avatar: "/logo.svg"
+        avatar: "/logo.svg",
+        menu: "加载中"
       };
     },
     methods: {
@@ -1892,6 +1893,7 @@ if (document.getElementById("app")) {
     mounted: function mounted() {
       var _this = this;
 
+      // 获取头像
       axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/avatar", {
         email: admin.email
       }).then(function (response) {
@@ -1902,7 +1904,15 @@ if (document.getElementById("app")) {
       });
     }
   };
-  Vue.createApp(app).mount("#app");
+  Vue.createApp(vue_header).mount("#vue-header");
+  var test = {
+    data: function data() {
+      return {
+        text: "1"
+      };
+    }
+  };
+  Vue.createApp(test).mount("#test");
 }
 
 /***/ }),

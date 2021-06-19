@@ -13,9 +13,7 @@ declare(strict_types=1);
 use App\Controller\AdminController;
 use Hyperf\HttpServer\Router\Router;
 
-Router::addRoute(['GET', 'POST', 'HEAD'], '/', 'App\Controller\IndexController@index',[
-    "middleware" => [\App\Middleware\AdminMiddleware::class]
-]);
+
 
 Router::get('/test', function () {
     return \App\CodeFec\Header\functions::header()->get();

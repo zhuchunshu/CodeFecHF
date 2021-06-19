@@ -16,17 +16,7 @@ use Illuminate\Support\Arr;
 class Menu implements MenuInterface
 {
     public $list = [
-        0 => [
-            'url' => '/',
-            'name' => '仪表盘',
-            'icon' => '',
-        ],
-        1 => [
-            'url' => '/',
-            'name' => '仪表盘',
-            'icon' => '',
-            'parent_id' => 0,
-        ],
+        
     ];
 
     public function get(): array
