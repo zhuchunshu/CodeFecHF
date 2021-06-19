@@ -1905,14 +1905,6 @@ if (document.getElementById("app")) {
     }
   };
   Vue.createApp(vue_header).mount("#vue-header");
-  var test = {
-    data: function data() {
-      return {
-        text: "1"
-      };
-    }
-  };
-  Vue.createApp(test).mount("#test");
 }
 
 /***/ }),

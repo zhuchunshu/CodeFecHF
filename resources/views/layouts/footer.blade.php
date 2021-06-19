@@ -16,12 +16,6 @@
                         Copyright &copy; 2021
                         <a href="." class="link-secondary">{{ config("codefec.app.name","CodeFec") }}</a>
                     </li>
-                    <li class="list-inline-item">
-                        <a href="https://www.swoole.com/" class="link-secondary" rel="noopener">SWOOLE V{{ SWOOLE_VERSION }}</a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="#" class="link-secondary" rel="noopener">CPU CORE: {{ swoole_cpu_num() }}</a>
-                    </li>
                 </ul>
             </div>
         </div>
