@@ -88,6 +88,6 @@ class Card
      */
     public function render(): ResponseInterface
     {
-        return view('admin.Ui.card', ['title' => $this->title, 'titleType' => $this->titleType, 'content' => $this->content,"AddClass" => $this->AddClass]);
+        return view('admin.Ui.card', ['title' => $this->title, 'titleType' => $this->titleType, 'content' => $this->content, 'AddClass' => $this->AddClass]);
     }
 }
