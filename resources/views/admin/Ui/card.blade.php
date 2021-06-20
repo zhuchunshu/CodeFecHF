@@ -1,4 +1,4 @@
-<div class="card {!! $AddClass !!}">
+<div id="{{ $id }}" class="card {!! $AddClass !!}">
     @if(!$title)
         <div class="card-body">
             {!! $content !!}

@@ -11,6 +11,7 @@ declare(strict_types=1);
  */
 namespace  App\CodeFec\Admin\Ui;
 
+use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
 
 /**
@@ -39,6 +40,8 @@ class Card
      * 续增Class.
      */
     public $AddClass;
+
+    public $id;
 
     /**
      * 设置卡片标题.
@@ -83,11 +86,25 @@ class Card
         return $this;
     }
 
+    public function id($id=""){
+        if(!$id){
+            $this->id = Str::random(7);
+        }
+        $this->id = $id;
+        return $this;
+    }
+
     /**
      * 渲染卡片.
      */
     public function render(): ResponseInterface
     {
-        return view('admin.Ui.card', ['title' => $this->title, 'titleType' => $this->titleType, 'content' => $this->content, 'AddClass' => $this->AddClass]);
+        if(!$this->content){
+            $this->content = "无内容";
+        }
+        if(!$this->id){
+            $this->id = Str::random(7);
+        }
+        return view('admin.Ui.card', ['title' => $this->title, 'titleType' => $this->titleType, 'content' => $this->content, 'AddClass' => $this->AddClass,"id" => $this->id]);
     }
 }
