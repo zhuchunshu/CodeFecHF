@@ -36,6 +36,8 @@ mix.js(resources_path("js/vue.js"),"js").vue({ version: 3 })
     mix.js(resources_path("js/admin/login.js"),"js/admin").version();
     // component
     mix.js(resources_path("js/admin/component.js"),"js/admin").version();
+    // setting
+    mix.js(resources_path("js/admin/setting.js"),"js/admin").version();
 
 
 // app.css
