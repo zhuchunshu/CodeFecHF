@@ -6,6 +6,7 @@ namespace App\Controller\Admin;
 
 use App\CodeFec\Admin\Ui;
 use App\CodeFec\Admin\Ui\Card;
+use Hyperf\HttpServer\Annotation\Middleware;
 use Hyperf\HttpServer\Annotation\RequestMapping;
 use Hyperf\HttpServer\Contract\RequestInterface;
 use Hyperf\HttpServer\Contract\ResponseInterface;
@@ -14,6 +15,7 @@ use Hyperf\HttpServer\Annotation\Controller;
 /**
  * Class SettingController
  * @Controller()
+ * @Middleware(\App\Middleware\AdminMiddleware::class)
  * @package App\Controller\Admin
  */
 class SettingController
