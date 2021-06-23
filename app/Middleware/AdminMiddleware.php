@@ -26,13 +26,7 @@ class AdminMiddleware implements MiddlewareInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         if(!Admin::Check()){
-            if(request()->input("data")=="json"){
-                return $this->container->get(\Hyperf\HttpServer\Contract\ResponseInterface::class)->json(Json_Api(401,false,["msg" => "无权访问"]));
-            }
-            if(request()->isMethod("POST")){
-                return $this->container->get(\Hyperf\HttpServer\Contract\ResponseInterface::class)->json(Json_Api(401,false,["msg" => "无权访问"]));
-            }
-            return view("admin.error");
+            return admin_abort(["msg" => "无权访问,请先登录"]);
         }
         return $handler->handle($request);
     }

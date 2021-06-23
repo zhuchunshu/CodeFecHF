@@ -283,7 +283,7 @@ if (!function_exists("read_plugin_data")) {
 
 if(!function_exists("admin_abort")){
     function admin_abort($array){
-        if(request()->input("data")=="json"){
+        if(request()->isMethod("POST") or request()->input("data")=="json"){
             return response()->json(Json_Api(403,false,$array));
         }
         return view('admin.error');
