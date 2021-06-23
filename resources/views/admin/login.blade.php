@@ -31,27 +31,32 @@
             <div class="text-center mb-4">
                 <a href="#"><img src="/logo.svg" height="36" alt=""></a>
             </div>
-            <div id="form" class="card card-md" action="/admin/login" method="post" autocomplete="off">
-                <div class="card-body">
-                    <h2 class="card-title text-center mb-4">登陆</h2>
-                    <div class="mb-3">
-                        <label class="form-label">Username</label>
-                        <input type="text" v-model="username" class="form-control" placeholder="Enter Username">
-                    </div>
-                    <div class="mb-2">
-                        <label class="form-label">
-                            Password
-                        </label>
-                        <div class="input-group input-group-flat">
-                            <input type="password" v-model="password" class="form-control" placeholder="Password" autocomplete="off">
+            <div id="form">
+                <form @@submit.prevent="submit" class="card card-md" action="/admin/login" method="post"
+                    autocomplete="off">
+                    <div class="card-body">
+                        <h2 class="card-title text-center mb-4">登陆</h2>
+                        <div class="mb-3">
+                            <label class="form-label">Username</label>
+                            <input type="text" v-model="username" class="form-control" placeholder="Enter Username">
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label">
+                                Password
+                            </label>
+                            <div class="input-group input-group-flat">
+                                <input type="password" v-model="password" class="form-control" placeholder="Password"
+                                    autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="form-footer" id="submit">
+                            <button @@click="submit" type="submit" class="btn btn-primary w-100">Sign in</button>
                         </div>
                     </div>
-                    <div class="form-footer" id="submit">
-                        <button @@click="submit" type="submit" class="btn btn-primary w-100">Sign in</button>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
+    </div>
     </div>
     <script src="/js/jquery-3.6.0.min.js"></script>
     <script src="{{ mix('js/vue.js') }}"></script>
