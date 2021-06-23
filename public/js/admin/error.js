@@ -2075,6 +2075,7 @@ var empty = {
   mounted: function mounted() {
     var _this = this;
 
+    // 获取错误信息
     axios.get(location.href + "?data=json").then(function (response) {
       return _this.code = response.data.code, _this.msg = response.data.result.msg, _this.url = document.referrer;
     })["catch"](function (error) {
@@ -2082,6 +2083,16 @@ var empty = {
       swal({
         title: "错误信息获取失败! 详细请查看控制台"
       });
+    }); // 获取跳转链接
+
+    axios.post("/api/AdminErrorRedirect", {
+      path: location.pathname
+    }).then(function (response) {
+      var data = response.data;
+
+      if (data.success === true) {
+        _this.url = data.result.data;
+      }
     });
   }
 };
