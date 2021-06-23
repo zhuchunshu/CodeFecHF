@@ -36,8 +36,9 @@ class AdminController
 
     public function login()
     {
+        
         if(Admin::Check()){
-            return Json_Api(403,false,["msg"=>"您已登录"]);
+            return admin_abort(["msg"=>"您已登录"]);
         }
         return view('admin.login');
     }

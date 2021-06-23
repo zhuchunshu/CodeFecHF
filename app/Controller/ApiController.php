@@ -39,7 +39,8 @@ class ApiController
 
     public function AdminErrorRedirect(){
         $list = [
-            "/admin" => "/admin/login"
+            "/admin" => "/admin/login",
+            "/admin/login" => "/admin"
         ];
         if(request()->input("path",null)){
             $path = request()->input("path",null);

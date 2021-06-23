@@ -17,6 +17,7 @@ use App\CodeFec\Menu\MenuInterface;
 use Hyperf\Utils\ApplicationContext;
 use Illuminate\Support\Facades\File;
 use Hyperf\Contract\SessionInterface;
+use Hyperf\HttpServer\Contract\ResponseInterface;
 
 function public_path($path = ''): string
 {
@@ -277,5 +278,14 @@ if (!function_exists("read_plugin_data")) {
         } else {
             return json_decode(@read_file(plugin_path($name . "/data.json")), true);
         }
+    }
+}
+
+if(!function_exists("admin_abort")){
+    function admin_abort($array){
+        if(request()->input("data")=="json"){
+            return response()->json(Json_Api(403,false,$array));
+        }
+        return view('admin.error');
     }
 }
