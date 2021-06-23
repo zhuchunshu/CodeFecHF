@@ -9,6 +9,9 @@
                 {{ config('codefec.app.name', 'CodeFec') }}
             </a>
         </h1>
+        <h1 class="navbar-brand navbar-brand-autodark">
+            
+        </h1>
         
         <div class="collapse navbar-collapse" id="navbar-menu">
             <ul class="navbar-nav pt-lg-3">
