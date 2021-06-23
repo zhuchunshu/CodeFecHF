@@ -10,13 +10,14 @@ declare(strict_types=1);
  * @license  https://github.com/zhuchunshu/CodeFecHF/blob/master/LICENSE
  */
 
+use App\CodeFec\Plugins;
 use App\Controller\AdminController;
 use Hyperf\HttpServer\Router\Router;
 
 
 
 Router::get('/test', function () {
-    return \App\CodeFec\Header\functions::header()->get();
+    return Plugins::GetAll();
 });
 
 // 后台登陆

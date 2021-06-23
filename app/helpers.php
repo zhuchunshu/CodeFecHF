@@ -15,6 +15,7 @@ use Illuminate\Support\Str;
 use Hyperf\View\RenderInterface;
 use App\CodeFec\Menu\MenuInterface;
 use Hyperf\Utils\ApplicationContext;
+use Illuminate\Support\Facades\File;
 use Hyperf\Contract\SessionInterface;
 
 function public_path($path = ''): string
@@ -166,10 +167,11 @@ if (!function_exists("menu")) {
     }
 }
 
-if(!function_exists("view")){
-    function view(string $view,array $data=[]){
+if (!function_exists("view")) {
+    function view(string $view, array $data = [])
+    {
         $container = \Hyperf\Utils\ApplicationContext::getContainer();
-        return $container->get(RenderInterface::class)->render($view,$data);
+        return $container->get(RenderInterface::class)->render($view, $data);
     }
 }
 
@@ -195,7 +197,7 @@ if (!function_exists("menu_pdArr")) {
         foreach (menu()->get() as $key => $value) {
             if (arr_has($value, "parent_id")) {
                 if ($value['parent_id'] == $id) {
-                    $arr[]=$value;
+                    $arr[] = $value;
                 }
             }
         }
@@ -203,8 +205,9 @@ if (!function_exists("menu_pdArr")) {
     }
 }
 
-if(!function_exists("Json_Api")){
-    function Json_Api(int $code=200,bool $success=true,array $result=[]){
+if (!function_exists("Json_Api")) {
+    function Json_Api(int $code = 200, bool $success = true, array $result = [])
+    {
         return [
             "code" => $code,
             "success" => $success,
@@ -213,9 +216,66 @@ if(!function_exists("Json_Api")){
     }
 }
 
-if(!function_exists("session")){
-    function session(){
+if (!function_exists("session")) {
+    function session()
+    {
         $container = \Hyperf\Utils\ApplicationContext::getContainer();
         return $container->get(SessionInterface::class);
+    }
+}
+
+// 获取目录下的所有文件夹
+if (!function_exists("getPath")) {
+    function getPath($path)
+    {
+        if (!is_dir($path)) {
+            return false;
+        }
+        $arr = array();
+        $data = scandir($path);
+        foreach ($data as $value) {
+            if ($value != '.' && $value != '..') {
+                $arr[] = $value;
+            }
+        }
+        return $arr;
+    }
+}
+
+if (!function_exists("plugin_path")) {
+    function plugin_path($path = null)
+    {
+        if (!$path) {
+            return BASE_PATH . "/app/Plugins";
+        }
+        return BASE_PATH . "/app/Plugins/" . $path;
+    }
+}
+
+if (!function_exists("read_file")) {
+    function read_file($file_path)
+    {
+        if (file_exists($file_path)) {
+            $str = File::get($file_path);
+            return $str;
+        } else {
+            return null;
+        }
+    }
+}
+
+if (!function_exists("read_plugin_data")) {
+    /**
+     * 读取插件data.json文件
+     *
+     * @param string 插件目录名 $name
+     */
+    function read_plugin_data(string $name, $bool = true)
+    {
+        if ($bool === true) {
+            return json_decode(@read_file(plugin_path($name . "/data.json")));
+        } else {
+            return json_decode(@read_file(plugin_path($name . "/data.json")), true);
+        }
     }
 }
