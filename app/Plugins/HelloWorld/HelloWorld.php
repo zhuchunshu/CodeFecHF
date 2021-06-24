@@ -6,13 +6,11 @@ namespace App\Plugins\HelloWorld;
  * @author Inkedus
  * @link https://github.com/zhuchunshu/FeBox-HelloWorld
  * @name HelloWorld
+ * @version 1.0.0
  * @package App\Plugins\HelloWorld
  */
 class HelloWorld{
 
-    /**
-     * Handle
-     */
     public function handle(){
 
     }

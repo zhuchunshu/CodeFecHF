@@ -25,6 +25,7 @@ class PluginsController
      * @GetMapping(path="/")
      * @param Ui $ui
      * @param Row $row
+     * @param Card $card
      * @return \Psr\Http\Message\ResponseInterface
      */
     public function index(Ui $ui,Row $row,Card $card): \Psr\Http\Message\ResponseInterface
