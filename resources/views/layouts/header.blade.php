@@ -10,74 +10,89 @@
             </a>
         </h1>
         <h1 class="navbar-brand navbar-brand-autodark">
-            
+
         </h1>
-        
+
         <div class="collapse navbar-collapse" id="navbar-menu">
             <ul class="navbar-nav pt-lg-3">
-                @foreach(menu()->get() as $key=>$value)
-                    @if(!arr_has($value,"parent_id"))
-                        @if(!menu_pd($key))
-                        <li class="nav-item">
+                @foreach (menu()->get() as $key => $value)
+                    @if (!arr_has($value, 'parent_id'))
+                        @if (!menu_pd($key))
+                            @if ('/' . request()->path() == $value['url'])
+                                <li class="nav-item active">
+                                @else
+                                <li class="nav-item">
+                            @endif
                             <a class="nav-link" href="{{ $value['url'] }}">
                                 <span class="nav-link-icon d-md-none d-lg-inline-block">
                                     <!-- Download SVG icon from http://tabler-icons.io/i/package -->
-                                    @if($value['icon'])
+                                    @if ($value['icon'])
                                         {!! $value['icon'] !!}
                                     @else
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <circle cx="12" cy="12" r="9"></circle>
-                                    </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="icon icon-tabler icon-tabler-circle" width="24" height="24"
+                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <circle cx="12" cy="12" r="9"></circle>
+                                        </svg>
                                     @endif
                                 </span>
                                 <span class="nav-link-title">
                                     {{ $value['name'] }}
                                 </span>
                             </a>
-                        </li>
+                            </li>
                         @else
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" role="button"
-                                aria-expanded="false">
-                                <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                    <!-- Download SVG icon from http://tabler-icons.io/i/package -->
-                                    @if($value['icon'])
-                                        {!! $value['icon'] !!}
-                                    @else
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <circle cx="12" cy="12" r="9"></circle>
-                                    </svg>
-                                    @endif
-                                </span>
-                                <span class="nav-link-title">
-                                    {{ $value['name'] }}
-                                </span>
-                            </a>
-                            <div class="dropdown-menu">
-                                <div class="dropdown-menu-columns">
-                                    <div class="dropdown-menu-column">
-                                        @foreach(menu_pdArr($key) as $keys => $values)
-                                        <a class="dropdown-item" href="{{ $values['url'] }}">
-                                            <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                                <!-- Download SVG icon from http://tabler-icons.io/i/package -->
-                                                @if($values['icon'])
-                                                    {!! $values['icon'] !!}
-                                                @else
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                    <circle cx="12" cy="12" r="9"></circle>
-                                                </svg>
-                                                @endif
-                                            </span>{{ $values['name'] }}
-                                        </a>
-                                        
-                                        @endforeach       
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown"
+                                    role="button" aria-expanded="false">
+                                    <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                        <!-- Download SVG icon from http://tabler-icons.io/i/package -->
+                                        @if ($value['icon'])
+                                            {!! $value['icon'] !!}
+                                        @else
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon icon-tabler icon-tabler-circle" width="24" height="24"
+                                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <circle cx="12" cy="12" r="9"></circle>
+                                            </svg>
+                                        @endif
+                                    </span>
+                                    <span class="nav-link-title">
+                                        {{ $value['name'] }}
+                                    </span>
+                                </a>
+                                <div class="dropdown-menu">
+                                    <div class="dropdown-menu-columns">
+                                        <div class="dropdown-menu-column">
+                                            @foreach (menu_pdArr($key) as $keys => $values)
+                                                <a class="dropdown-item" href="{{ $values['url'] }}">
+                                                    <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                        <!-- Download SVG icon from http://tabler-icons.io/i/package -->
+                                                        @if ($values['icon'])
+                                                            {!! $values['icon'] !!}
+                                                        @else
+                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                class="icon icon-tabler icon-tabler-circle" width="24"
+                                                                height="24" viewBox="0 0 24 24" stroke-width="2"
+                                                                stroke="currentColor" fill="none" stroke-linecap="round"
+                                                                stroke-linejoin="round">
+                                                                <path stroke="none" d="M0 0h24v24H0z" fill="none">
+                                                                </path>
+                                                                <circle cx="12" cy="12" r="9"></circle>
+                                                            </svg>
+                                                        @endif
+                                                    </span>{{ $values['name'] }}
+                                                </a>
+
+                                            @endforeach
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </li>
+                            </li>
                         @endif
                     @endif
                 @endforeach

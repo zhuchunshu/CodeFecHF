@@ -17,7 +17,7 @@ use Hyperf\HttpServer\Router\Router;
 
 
 Router::get('/test', function () {
-    return Plugins::GetAll();
+    return request()->path();
 });
 
 // 后台登陆
