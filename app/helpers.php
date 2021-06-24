@@ -17,6 +17,7 @@ use App\CodeFec\Menu\MenuInterface;
 use Hyperf\Utils\ApplicationContext;
 use Illuminate\Support\Facades\File;
 use Hyperf\Contract\SessionInterface;
+use Hyperf\HttpMessage\Stream\SwooleStream;
 use Hyperf\HttpServer\Contract\ResponseInterface;
 
 function public_path($path = ''): string
@@ -169,10 +170,10 @@ if (!function_exists("menu")) {
 }
 
 if (!function_exists("view")) {
-    function view(string $view, array $data = [])
+    function view(string $view, array $data = [],int $code=200)
     {
         $container = \Hyperf\Utils\ApplicationContext::getContainer();
-        return $container->get(RenderInterface::class)->render($view, $data);
+        return $container->get(RenderInterface::class)->render($view, $data,$code);
     }
 }
 
@@ -282,10 +283,10 @@ if (!function_exists("read_plugin_data")) {
 }
 
 if(!function_exists("admin_abort")){
-    function admin_abort($array){
+    function admin_abort($array,$code=403){
         if(request()->isMethod("POST") or request()->input("data")=="json"){
-            return response()->json(Json_Api(403,false,$array));
+            return response()->json(Json_Api($code,false,$array));
         }
-        return view('admin.error');
+        return view('admin.error',[],$code);
     }
 }
