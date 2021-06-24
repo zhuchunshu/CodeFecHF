@@ -12,12 +12,13 @@ declare(strict_types=1);
 
 use App\CodeFec\Plugins;
 use App\Controller\AdminController;
+use App\Plugins\HelloWorld\HelloWorld;
 use Hyperf\HttpServer\Router\Router;
 
 
 
 Router::get('/test', function () {
-    return request()->path();
+    return get_plugins_doc(HelloWorld::class);
 });
 
 // 后台登陆

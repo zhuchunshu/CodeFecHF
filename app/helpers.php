@@ -171,10 +171,10 @@ if (!function_exists("menu")) {
 }
 
 if (!function_exists("view")) {
-    function view(string $view, array $data = [],int $code=200)
+    function view(string $view, array $data = [], int $code = 200)
     {
         $container = \Hyperf\Utils\ApplicationContext::getContainer();
-        return $container->get(RenderInterface::class)->render($view, $data,$code);
+        return $container->get(RenderInterface::class)->render($view, $data, $code);
     }
 }
 
@@ -283,11 +283,29 @@ if (!function_exists("read_plugin_data")) {
     }
 }
 
-if(!function_exists("admin_abort")){
-    function admin_abort($array,$code=403){
-        if(request()->isMethod("POST") or request()->input("data")=="json"){
-            return response()->json(Json_Api($code,false,$array));
+if (!function_exists("admin_abort")) {
+    function admin_abort($array, $code = 403)
+    {
+        if (request()->isMethod("POST") or request()->input("data") == "json") {
+            return response()->json(Json_Api($code, false, $array));
         }
-        return view('admin.error',[],$code);
+        return view('admin.error', [], $code);
+    }
+}
+
+if (!function_exists("get_plugins_doc")) {
+    function get_plugins_doc($class)
+    {
+        $re  = new ReflectionClass(new $class());
+        $content = $re->getDocComment();
+        $preg = "/@+(.*)/";
+        preg_match_all($preg, $content, $result);
+        $result = $result[1];
+        $arr = [];
+        foreach ($result as $key => $value) {
+            $result1 = explode(" ", $value);
+            $arr[$result1[0]] = $result1[1];
+        }
+        return $arr;
     }
 }
