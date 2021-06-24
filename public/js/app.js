@@ -1859,7 +1859,8 @@ if (document.getElementById("app")) {
         Username: admin.username,
         Email: admin.email,
         avatar: "/logo.svg",
-        menu: "加载中"
+        menu: "加载中",
+        setting_im: "/admin/setting/im"
       };
     },
     methods: {

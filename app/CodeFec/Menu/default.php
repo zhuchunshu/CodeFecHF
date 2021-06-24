@@ -23,3 +23,16 @@ menu()->add(1,[
     <line x1="16" y1="5.25" x2="8" y2="9.75"></line>
  </svg>',
 ]);
+
+menu()->add(2,[
+    'url' => '/admin/plugins',
+    'name' => '插件列表',
+    'icon' => '',
+    'parent_id' => 1
+]);
+menu()->add(3,[
+    'url' => '/admin/plugins/add',
+    'name' => '上传插件',
+    'icon' => '',
+    'parent_id' => 1
+]);

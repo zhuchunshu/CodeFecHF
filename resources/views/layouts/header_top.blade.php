@@ -22,6 +22,7 @@
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <a :href="setting_im" class="dropdown-item">个人设置</a>
                     <a href="#" @@click="logout" class="dropdown-item">Logout</a>
                 </div>
             </div>

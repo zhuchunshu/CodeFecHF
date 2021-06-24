@@ -35,6 +35,11 @@ class Admin
         return session()->get('admin');
     }
 
+    public static function id()
+    {
+        return session()->get('admin')['id'];
+    }
+
     public static function Check(): bool
     {
         return session()->has('admin');
