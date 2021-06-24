@@ -44,7 +44,11 @@
                             </a>
                             </li>
                         @else
+                        @if ('/' . request()->path() == $value['url'])
+                            <li class="nav-item active dropdown">
+                            @else
                             <li class="nav-item dropdown">
+                        @endif
                                 <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown"
                                     role="button" aria-expanded="false">
                                     <span class="nav-link-icon d-md-none d-lg-inline-block">
@@ -65,11 +69,19 @@
                                         {{ $value['name'] }}
                                     </span>
                                 </a>
-                                <div class="dropdown-menu">
+                                @if ('/' . request()->path() == $value['url'])
+                                    <div class="dropdown-menu show">
+                                @else
+                                    <div class="dropdown-menu">
+                                @endif
                                     <div class="dropdown-menu-columns">
                                         <div class="dropdown-menu-column">
                                             @foreach (menu_pdArr($key) as $keys => $values)
+                                                @if ('/' . request()->path() == $values['url'])
+                                                <a class="dropdown-item active" href="{{ $values['url'] }}">
+                                                @else
                                                 <a class="dropdown-item" href="{{ $values['url'] }}">
+                                                @endif
                                                     <span class="nav-link-icon d-md-none d-lg-inline-block">
                                                         <!-- Download SVG icon from http://tabler-icons.io/i/package -->
                                                         @if ($values['icon'])
