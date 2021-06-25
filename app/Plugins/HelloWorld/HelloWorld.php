@@ -12,7 +12,11 @@ namespace App\Plugins\HelloWorld;
 class HelloWorld{
 
     public function handle(){
-        
+        menu()->add(111,[
+            'url' => '/admin/plugins/HelloWorld',
+            'name' => 'HelloWorld',
+            'icon' => '',
+        ]);
     }
 
 }
