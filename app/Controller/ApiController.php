@@ -46,7 +46,7 @@ class ApiController
     {
         $array = AdminPlugin::query()->where("status",1)->get();
         $result = [];
-        foreach ($array as $key => $value) {
+        foreach ($array as $value) {
             $result[]=$value->name;
         }
         return Json_Api(200,true,['data' => $result]);

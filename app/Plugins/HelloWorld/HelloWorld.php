@@ -7,12 +7,12 @@ namespace App\Plugins\HelloWorld;
  * @link https://github.com/zhuchunshu/FeBox-HelloWorld
  * @name HelloWorld
  * @version 1.0.0
- * @package App\Plugins\HelloWorld
+ * @description 一个示范插件,插件名最好跟插件目录名一致
  */
 class HelloWorld{
 
     public function handle(){
-
+        
     }
 
 }

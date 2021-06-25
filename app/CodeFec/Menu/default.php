@@ -30,9 +30,3 @@ menu()->add(2,[
     'icon' => '',
     'parent_id' => 1
 ]);
-menu()->add(3,[
-    'url' => '/admin/plugins/add',
-    'name' => '上传插件',
-    'icon' => '',
-    'parent_id' => 1
-]);
