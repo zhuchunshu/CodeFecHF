@@ -57,29 +57,61 @@ if (document.getElementById("app")) {
   Vue.createApp(vue_header).mount("#vue-header");
 }
 
-
 if (document.getElementById("vue-plugin-table")) {
   const plugin_table = {
     data() {
       return {
-        switchs:[]
-      }
+        switchs: [],
+        num: 0,
+      };
+    },
+    watch: {
+      switchs: function (newval, oldval) {
+        if (this.num <= 0) {
+          this.num++;
+        } else {
+          axios
+            .post("/api/AdminPluginSave", {
+              data: this.switchs,
+            })
+            .then(function(response){
+              var data = response.data;
+              if(data.success===true){
+                swal({
+                  icon:"success",
+                  title:data.result.msg
+                })
+              }else{
+                swal({
+                  icon:"error",
+                  title:data.result.msg
+                })
+              }
+            })
+            .catch(function (error) {
+              swal({
+                icon: "error",
+                title: "请求出错,详细查看控制台",
+              });
+              console.log(error);
+            });
+        }
+      },
     },
     mounted() {
       //this.switchs.push("HelloWorld");
-      axios.post("/api/AdminPluginList")
-      .then(response=>(
-        this.switchs=response.data.result.data
-        
-      ))
-      .catch(function(error){
-        swal({
-          icon:"error",
-          title:"请求错误,详细查看控制台"
-        })
-        console.log(error)
-      })
+      axios
+        .post("/api/AdminPluginList")
+        .then((response) => (this.switchs = response.data.result.data))
+        .catch(function (error) {
+          swal({
+            icon: "error",
+            title: "请求错误,详细查看控制台",
+          });
+          console.log(error);
+        });
     },
-  }
+    methods: {},
+  };
   Vue.createApp(plugin_table).mount("#vue-plugin-table");
 }

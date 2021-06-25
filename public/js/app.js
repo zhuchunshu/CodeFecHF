@@ -1912,8 +1912,40 @@ if (document.getElementById("vue-plugin-table")) {
   var plugin_table = {
     data: function data() {
       return {
-        switchs: []
+        switchs: [],
+        num: 0
       };
+    },
+    watch: {
+      switchs: function switchs(newval, oldval) {
+        if (this.num <= 0) {
+          this.num++;
+        } else {
+          axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/AdminPluginSave", {
+            data: this.switchs
+          }).then(function (response) {
+            var data = response.data;
+
+            if (data.success === true) {
+              sweetalert__WEBPACK_IMPORTED_MODULE_2___default()({
+                icon: "success",
+                title: data.result.msg
+              });
+            } else {
+              sweetalert__WEBPACK_IMPORTED_MODULE_2___default()({
+                icon: "error",
+                title: data.result.msg
+              });
+            }
+          })["catch"](function (error) {
+            sweetalert__WEBPACK_IMPORTED_MODULE_2___default()({
+              icon: "error",
+              title: "请求出错,详细查看控制台"
+            });
+            console.log(error);
+          });
+        }
+      }
     },
     mounted: function mounted() {
       var _this2 = this;
@@ -1928,7 +1960,8 @@ if (document.getElementById("vue-plugin-table")) {
         });
         console.log(error);
       });
-    }
+    },
+    methods: {}
   };
   Vue.createApp(plugin_table).mount("#vue-plugin-table");
 }

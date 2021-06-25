@@ -52,6 +52,27 @@ class ApiController
         return Json_Api(200,true,['data' => $result]);
     }
 
+    /**
+     * @Middleware(AdminMiddleware::class)
+     */
+    public function AdminPluginSave()
+    {
+
+        if(request()->input("data") && is_array(request()->input("data"))){
+            Db::table('admin_plugins')->truncate();
+            $data = request()->input("data");
+            $arr = [];
+            foreach ($data as $value) {
+                $arr[]=['name' => $value,'status' => 1,'created_at' => date("Y-m-d H:i:s"),'updated_at' => date("Y-m-d H:i:s")];
+            }
+            Db::table('admin_plugins')->insert($arr);            
+            return Json_Api(200,true,['msg' => "更新成功!"]);
+        }else{
+            Db::table('admin_plugins')->truncate();
+            return Json_Api(200,true,['msg' => "更新成功!"]);
+        }
+    }
+
     public function AdminErrorRedirect(){
         $list = [
             "/admin" => "/admin/login",
