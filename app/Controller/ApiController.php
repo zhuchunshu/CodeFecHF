@@ -19,6 +19,8 @@ use App\Middleware\AdminMiddleware;
 use Hyperf\HttpServer\Annotation\Middleware;
 use Hyperf\HttpServer\Annotation\AutoController;
 use Hyperf\HttpServer\Contract\RequestInterface;
+use Illuminate\Support\Str;
+use League\Flysystem\FileExistsException;
 
 /**
  * @AutoController
@@ -35,7 +37,7 @@ class ApiController
     /**
      * @Middleware(AdminMiddleware::class)
      */
-    public function menu()
+    public function menu(): array
     {
         return Json_Api(200, true, menu()->get());
     }
@@ -43,7 +45,7 @@ class ApiController
     /**
      * @Middleware(AdminMiddleware::class)
      */
-    public function AdminPluginList()
+    public function AdminPluginList(): array
     {
         $array = AdminPlugin::query()->where("status", 1)->get();
         $result = [];
@@ -56,28 +58,29 @@ class ApiController
     /**
      * @Middleware(AdminMiddleware::class)
      */
-    public function AdminPluginSave()
+    public function AdminPluginSave(): array
     {
 
+        Db::table('admin_plugins')->truncate();
         if (request()->input("data") && is_array(request()->input("data"))) {
-            Db::table('admin_plugins')->truncate();
             $data = request()->input("data");
             $arr = [];
             foreach ($data as $value) {
                 $arr[] = ['name' => $value, 'status' => 1, 'created_at' => date("Y-m-d H:i:s"), 'updated_at' => date("Y-m-d H:i:s")];
             }
             Db::table('admin_plugins')->insert($arr);
-            return Json_Api(200, true, ['msg' => "更新成功!"]);
-        } else {
-            Db::table('admin_plugins')->truncate();
-            return Json_Api(200, true, ['msg' => "更新成功!"]);
         }
+        $myfile = fopen(BASE_PATH . "/app/CodeFec/logs/plugins.php", "w") or die("Unable to open file!");
+        $txt = "- ".date("Y-m-d H:i:s")."插件状态变动:\n" . json_encode(request()->input('data'));
+        fwrite($myfile, $txt);
+        fclose($myfile);
+        return Json_Api(200, true, ['msg' => "更新成功!"]);
     }
 
     /**
      * @Middleware(AdminMiddleware::class)
      */
-    public function AdminPluginRemove()
+    public function AdminPluginRemove(): array
     {
         if (request()->input("path")) {
             exec("rm -rf ".request()->input("path"),$result,$status);
@@ -88,7 +91,7 @@ class ApiController
         }
     }
 
-    public function AdminErrorRedirect()
+    public function AdminErrorRedirect(): array
     {
         $list = [
             "/admin" => "/admin/login",
