@@ -20,7 +20,7 @@
                 <td class="text-muted">{{ $value['data']['version'] }}</td>
                 <td>
                     <label class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" checked>
+                        <input class="form-check-input" value="{{ $value['data']['name'] }}" type="checkbox" v-model="switchs">
                     </label>
                 </td>
             </tr>

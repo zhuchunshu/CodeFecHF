@@ -56,3 +56,30 @@ if (document.getElementById("app")) {
   };
   Vue.createApp(vue_header).mount("#vue-header");
 }
+
+
+if (document.getElementById("vue-plugin-table")) {
+  const plugin_table = {
+    data() {
+      return {
+        switchs:[]
+      }
+    },
+    mounted() {
+      //this.switchs.push("HelloWorld");
+      axios.post("/api/AdminPluginList")
+      .then(response=>(
+        this.switchs=response.data.result.data
+        
+      ))
+      .catch(function(error){
+        swal({
+          icon:"error",
+          title:"请求错误,详细查看控制台"
+        })
+        console.log(error)
+      })
+    },
+  }
+  Vue.createApp(plugin_table).mount("#vue-plugin-table");
+}

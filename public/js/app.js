@@ -1908,6 +1908,31 @@ if (document.getElementById("app")) {
   Vue.createApp(vue_header).mount("#vue-header");
 }
 
+if (document.getElementById("vue-plugin-table")) {
+  var plugin_table = {
+    data: function data() {
+      return {
+        switchs: []
+      };
+    },
+    mounted: function mounted() {
+      var _this2 = this;
+
+      //this.switchs.push("HelloWorld");
+      axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/AdminPluginList").then(function (response) {
+        return _this2.switchs = response.data.result.data;
+      })["catch"](function (error) {
+        sweetalert__WEBPACK_IMPORTED_MODULE_2___default()({
+          icon: "error",
+          title: "请求错误,详细查看控制台"
+        });
+        console.log(error);
+      });
+    }
+  };
+  Vue.createApp(plugin_table).mount("#vue-plugin-table");
+}
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":

@@ -11,11 +11,13 @@ declare(strict_types=1);
  */
 namespace App\Controller;
 
-use App\Middleware\AdminMiddleware;
-use Hyperf\HttpServer\Annotation\AutoController;
-use Hyperf\HttpServer\Annotation\Middleware;
-use Hyperf\HttpServer\Contract\RequestInterface;
+use App\Model\AdminPlugin;
+use Hyperf\DbConnection\Db;
 use Illuminate\Support\Arr;
+use App\Middleware\AdminMiddleware;
+use Hyperf\HttpServer\Annotation\Middleware;
+use Hyperf\HttpServer\Annotation\AutoController;
+use Hyperf\HttpServer\Contract\RequestInterface;
 
 /**
  * @AutoController
@@ -35,6 +37,19 @@ class ApiController
     public function menu()
     {
         return Json_Api(200,true,menu()->get());
+    }
+
+    /**
+     * @Middleware(AdminMiddleware::class)
+     */
+    public function AdminPluginList()
+    {
+        $array = AdminPlugin::query()->where("status",1)->get();
+        $result = [];
+        foreach ($array as $key => $value) {
+            $result[]=$value->name;
+        }
+        return Json_Api(200,true,['data' => $result]);
     }
 
     public function AdminErrorRedirect(){
