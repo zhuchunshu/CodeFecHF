@@ -74,18 +74,18 @@ if (document.getElementById("vue-plugin-table")) {
             .post("/api/AdminPluginSave", {
               data: this.switchs,
             })
-            .then(function(response){
+            .then(function (response) {
               var data = response.data;
-              if(data.success===true){
+              if (data.success === true) {
                 swal({
-                  icon:"success",
-                  title:data.result.msg
-                })
-              }else{
+                  icon: "success",
+                  title: data.result.msg,
+                });
+              } else {
                 swal({
-                  icon:"error",
-                  title:data.result.msg
-                })
+                  icon: "error",
+                  title: data.result.msg,
+                });
               }
             })
             .catch(function (error) {
@@ -111,7 +111,45 @@ if (document.getElementById("vue-plugin-table")) {
           console.log(error);
         });
     },
-    methods: {},
+    methods: {
+      remove(name, path) {
+        if (this.switchs.indexOf(name) != -1) {
+          swal({
+            icon: "warning",
+            title: "安全起见,卸载插件前请先禁用插件",
+          });
+        } else {
+          axios
+            .post("/api/AdminPluginRemove",{
+              path:path
+            })
+            .then(function (response) {
+              var data = response.data;
+              if (data.success === true) {
+                swal({
+                  title: data.result.msg,
+                  icon: "success",
+                });
+                setTimeout(() => {
+                  location.reload();
+                }, 1200);
+              } else {
+                swal({
+                  title: data.result.msg,
+                  icon: "error",
+                });
+              }
+            })
+            .catch(function (error) {
+              swal({
+                title: "请求出错,详细查看控制台",
+                icon: "error",
+              });
+              console.log(error);
+            });
+        }
+      },
+    },
   };
   Vue.createApp(plugin_table).mount("#vue-plugin-table");
 }

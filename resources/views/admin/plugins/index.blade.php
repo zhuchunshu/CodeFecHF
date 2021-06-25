@@ -8,6 +8,7 @@
                 <th>插件版本</th>
                 <th>插件描述</th>
                 <th class="w-1"></th>
+                <th class="w-1"></th>
             </tr>
         </thead>
         <tbody id="vue-plugin-table">
@@ -22,8 +23,11 @@
                 <td class="text-muted">{{ $value['data']['description'] }}</td>
                 <td>
                     <label class="form-check form-switch">
-                        <input class="form-check-input" value="{{ $value['data']['name'] }}" type="checkbox" v-model="switchs">
+                        <input class="form-check-input" value="{{ $value['dir'] }}" type="checkbox" v-model="switchs">
                     </label>
+                </td>
+                <td>
+                    <a @@click="remove('{{ $value['dir'] }}','{{ $value['path'] }}')" href="#">卸载</a>
                 </td>
             </tr>
             @endforeach
