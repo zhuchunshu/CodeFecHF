@@ -1,6 +1,6 @@
 <div class="alert alert-success" role="alert">
     <h4 class="alert-title">安全提示</h4>
-    <div class="text-muted">如果两个插件共用同一路由,请先禁用不用的那个插件，以免造成冲突</div>
+    <div class="text-muted">如果两个插件共用同一路由,请先禁用不用的插件，以免造成冲突</div>
 </div>
 <div class="table-responsive">
     <table class="table table-vcenter">
