@@ -12,7 +12,7 @@ interface UiInterface{
      * 创建UI钩子
      *
      * @param integer 唯一id $id
-     * @param integer 类型 $type
+     * @param integer 类型 $type (css,js,...)
      * @param string 值 $value
      * @return boolean
      */
