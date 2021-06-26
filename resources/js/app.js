@@ -120,8 +120,8 @@ if (document.getElementById("vue-plugin-table")) {
           });
         } else {
           axios
-            .post("/api/AdminPluginRemove",{
-              path:path
+            .post("/api/AdminPluginRemove", {
+              path: path,
             })
             .then(function (response) {
               var data = response.data;
@@ -133,6 +133,41 @@ if (document.getElementById("vue-plugin-table")) {
                 setTimeout(() => {
                   location.reload();
                 }, 1200);
+              } else {
+                swal({
+                  title: data.result.msg,
+                  icon: "error",
+                });
+              }
+            })
+            .catch(function (error) {
+              swal({
+                title: "请求出错,详细查看控制台",
+                icon: "error",
+              });
+              console.log(error);
+            });
+        }
+      },
+      // 资源迁移
+      move(name) {
+        if (this.switchs.indexOf(name) == -1) {
+          swal({
+            title: "请先启用插件后在运行迁移",
+            icon: "error",
+          });
+        } else {
+          axios
+            .post("/api/AdminPluginMove", {
+              name: name,
+            })
+            .then(function (response) {
+              var data = response.data;
+              if (data.success === true) {
+                swal({
+                  title: data.result.msg,
+                  icon: "success",
+                });
               } else {
                 swal({
                   title: data.result.msg,

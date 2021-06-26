@@ -9,6 +9,7 @@
                 <th>插件描述</th>
                 <th class="w-1"></th>
                 <th class="w-1"></th>
+                <th class="w-1"></th>
             </tr>
         </thead>
         <tbody id="vue-plugin-table">
@@ -25,6 +26,9 @@
                     <label class="form-check form-switch">
                         <input class="form-check-input" value="{{ $value['dir'] }}" type="checkbox" v-model="switchs">
                     </label>
+                </td>
+                <td>
+                    <a @@click="move('{{ $value['dir'] }}','{{ $value['path'] }}')" href="#">迁移资源</a>
                 </td>
                 <td>
                     <a @@click="remove('{{ $value['dir'] }}','{{ $value['path'] }}')" href="#">卸载</a>

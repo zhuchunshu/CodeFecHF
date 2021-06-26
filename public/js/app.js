@@ -1996,6 +1996,39 @@ if (document.getElementById("vue-plugin-table")) {
             console.log(error);
           });
         }
+      },
+      // 资源迁移
+      move: function move(name) {
+        if (this.switchs.indexOf(name) == -1) {
+          sweetalert__WEBPACK_IMPORTED_MODULE_2___default()({
+            title: "请先启用插件后在运行迁移",
+            icon: "error"
+          });
+        } else {
+          axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/AdminPluginMove", {
+            name: name
+          }).then(function (response) {
+            var data = response.data;
+
+            if (data.success === true) {
+              sweetalert__WEBPACK_IMPORTED_MODULE_2___default()({
+                title: data.result.msg,
+                icon: "success"
+              });
+            } else {
+              sweetalert__WEBPACK_IMPORTED_MODULE_2___default()({
+                title: data.result.msg,
+                icon: "error"
+              });
+            }
+          })["catch"](function (error) {
+            sweetalert__WEBPACK_IMPORTED_MODULE_2___default()({
+              title: "请求出错,详细查看控制台",
+              icon: "error"
+            });
+            console.log(error);
+          });
+        }
       }
     }
   };

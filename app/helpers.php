@@ -245,7 +245,7 @@ if (!function_exists("getPath")) {
     }
 }
 
-if (!function_exists("plugin_path")) {
+if (!function_exists("h")) {
     function plugin_path($path = null)
     {
         if (!$path) {
@@ -336,5 +336,25 @@ if (!function_exists("deldir")) {
         }
         //删除目录
         return rmdir($path);
+    }
+}
+
+
+if(!function_exists("copy_dir")){
+    function copy_dir($src, $dst)
+    {
+        $dir = opendir($src);
+        @mkdir($dst);
+        while (false !== ($file = readdir($dir))) {
+            if (($file != '.') && ($file != '..')) {
+                if (is_dir($src . '/' . $file)) {
+                    copy_dir($src . '/' . $file, $dst . '/' . $file);
+                    continue;
+                } else {
+                    copy($src . '/' . $file, $dst . '/' . $file);
+                }
+            }
+        }
+        closedir($dir);
     }
 }
