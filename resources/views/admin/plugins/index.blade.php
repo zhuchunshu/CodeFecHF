@@ -3,7 +3,7 @@
     <div class="text-muted">如果两个插件共用同一路由,请先卸载不用的插件，以免造成冲突</div>
 </div>
 <div class="table-responsive">
-    <table class="table table-vcenter">
+    <table class="table table-vcenter table-nowrap">
         <thead>
             <tr>
                 <th>插件目录</th>
